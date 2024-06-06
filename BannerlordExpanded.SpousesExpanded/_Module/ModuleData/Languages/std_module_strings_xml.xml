@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+	<tags>
+		<tag language="English" />
+	</tags>
+	<strings>
+		<!-- Base Dialogs -->
+		<string id="BannerlordExpandedSpousesExpanded_SpouseDialog" text="{?SPOUSE.GENDER}My wife{?}My husband{\?}, I would like to talk to you about something." />
+		<string id="BannerlordExpandedSpousesExpanded_SpouseDialog_Start" text="What is it?" />
+		<string id="BannerlordExpandedSpousesExpanded_SpouseDialog_Cancel" text="Nevermind." />
+
+	
+		<!-- Polygamy (Set Main Spouse) -->
+		<string id="BannerlordExpandedSpousesExpanded_SpouseDialog_SetMainSpouse" text="I want you to become my main spouse." />
+		<string id="BannerlordExpandedSpousesExpanded_SpouseDialog_SetMainSpouse_AreYourSure" text="Are you sure?" />
+		<string id="BannerlordExpandedSpousesExpanded_SpouseDialog_SetMainSpouse_AreYourSure_Result_Yes" text="Yes of course!" />
+		<string id="BannerlordExpandedSpousesExpanded_SpouseDialog_SetMainSpouse_AreYourSure_Result_No" text="On second thought, I have changed my mind." />
+		
+		<string id="BannerlordExpandedSpousesExpanded_SpouseDialog_SetMainSpouse_AreYourSure_Result_Yes_After" text="I am more than happy to!" />
+	
+	</strings>
+</base>

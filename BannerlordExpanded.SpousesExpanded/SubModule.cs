@@ -1,4 +1,6 @@
-﻿using BannerlordExpanded.SpousesExpanded.Polygamy.Behaviors;
+﻿using BannerlordExpanded.SpousesExpanded.BaseSpouseDialog.Behaviors;
+using BannerlordExpanded.SpousesExpanded.Polygamy.Behaviors;
+using BannerlordExpanded.SpousesExpanded.Settings;
 using HarmonyLib;
 using System.Reflection;
 using TaleWorlds.CampaignSystem;
@@ -26,8 +28,10 @@ namespace BannerlordExpanded.SpousesExpanded
         {
             base.OnBeforeInitialModuleScreenSetAsRoot();
             Harmony harmony = new Harmony("BannerlordExpanded.SpousesExpanded");
-            //harmony.PatchCategory(Assembly.GetExecutingAssembly(), "PolygamyModule");
-            harmony.PatchAll(Assembly.GetExecutingAssembly());
+
+            if (MCMSettings.Instance.PolygamyEnabled)
+                harmony.PatchCategory(Assembly.GetExecutingAssembly(), "PolygamyModule");
+            //harmony.PatchAll(Assembly.GetExecutingAssembly());
         }
 
         protected override void OnGameStart(Game game, IGameStarter gameStarter)
@@ -38,7 +42,13 @@ namespace BannerlordExpanded.SpousesExpanded
 
         private void AddBehaviors(CampaignGameStarter gameStarter)
         {
-            gameStarter.AddBehavior(new PlayerPolygamyBehavior());
+            gameStarter.AddBehavior(new BaseWifeDialogBehavior());
+
+            if (MCMSettings.Instance.PolygamyEnabled)
+            {
+                gameStarter.AddBehavior(new PlayerPolygamyBehavior());
+                gameStarter.AddBehavior(new PlayerPolygamySetMainSpouseBehavior());
+            }
         }
     }
 }
