@@ -1,4 +1,7 @@
 ﻿using BannerlordExpanded.SpousesExpanded.BaseSpouseDialog.Behaviors;
+using BannerlordExpanded.SpousesExpanded.Behaviors;
+using BannerlordExpanded.SpousesExpanded.Divorce;
+using BannerlordExpanded.SpousesExpanded.MarriageOfferForPlayer.Behaviors;
 using BannerlordExpanded.SpousesExpanded.Polygamy.Behaviors;
 using BannerlordExpanded.SpousesExpanded.Settings;
 using HarmonyLib;
@@ -37,7 +40,8 @@ namespace BannerlordExpanded.SpousesExpanded
         protected override void OnGameStart(Game game, IGameStarter gameStarter)
         {
             base.OnGameStart(game, gameStarter);
-            AddBehaviors(gameStarter as CampaignGameStarter);
+            if (gameStarter is CampaignGameStarter)
+                AddBehaviors(gameStarter as CampaignGameStarter);
         }
 
         private void AddBehaviors(CampaignGameStarter gameStarter)
@@ -48,6 +52,18 @@ namespace BannerlordExpanded.SpousesExpanded
             {
                 gameStarter.AddBehavior(new PlayerPolygamyBehavior());
                 gameStarter.AddBehavior(new PlayerPolygamySetMainSpouseBehavior());
+            }
+            if (MCMSettings.Instance.DontWantEldestMemberEnabled)
+            {
+                gameStarter.AddBehavior(new DontWantEldestMemberBehavior());
+            }
+            if (MCMSettings.Instance.MarriageOfferForPlayerEnabled)
+            {
+                gameStarter.AddBehavior(new MarriageOfferForPlayerBehavior());
+            }
+            if (MCMSettings.Instance.DivorceEnabled)
+            {
+                gameStarter.AddBehavior(new PlayerDivorceBehavior());
             }
         }
     }

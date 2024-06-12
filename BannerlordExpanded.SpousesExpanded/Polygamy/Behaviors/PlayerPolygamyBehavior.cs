@@ -53,5 +53,28 @@ namespace BannerlordExpanded.SpousesExpanded.Polygamy.Behaviors
         {
             _secondarySpouses.Add(hero);
         }
+
+        public bool RemoveSpouse(Hero hero)
+        {
+            if (Hero.MainHero.Spouse == hero)
+            {
+                if (_secondarySpouses.Count > 0)
+                    Hero.MainHero.Spouse = _secondarySpouses[0];
+                else
+                    Hero.MainHero.Spouse = null;
+                return true;
+            }
+            else if (_secondarySpouses.Contains(hero))
+            {
+                _secondarySpouses.Remove(hero);
+                return true;
+            }
+            else
+            {
+                // Hero is not a spouse?!
+            }
+
+            return false;
+        }
     }
 }

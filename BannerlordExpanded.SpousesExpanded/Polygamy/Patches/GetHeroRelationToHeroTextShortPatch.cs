@@ -27,19 +27,20 @@ namespace BannerlordExpanded.SpousesExpanded.Polygamy.Patches
         static void Postfix(ref string __result, Hero queriedHero, Hero baseHero, bool uppercaseFirst)
         {
             TextObject textObject = null;
-            if (baseHero == Hero.MainHero && IsPlayerSpouse(queriedHero))
+
+            if (baseHero == Hero.MainHero && IsPlayerSpouse(queriedHero) || queriedHero == Hero.MainHero && IsPlayerSpouse(baseHero))
             {
                 textObject = GameTexts.FindText("str_spouse", null);
             }
-            else if (IsPlayerSpouse(queriedHero) && queriedHero.Father == queriedHero)
+            else if (baseHero == Hero.MainHero && IsPlayerSpouse(queriedHero) && queriedHero.Father == queriedHero)
             {
                 textObject = (!queriedHero.IsFemale ? GameTexts.FindText("str_husband_fatherinlaw", null) : GameTexts.FindText("str_wife_fatherinlaw", null));
             }
-            else if (IsPlayerSpouse(queriedHero) && queriedHero.Mother == queriedHero)
+            else if (baseHero == Hero.MainHero && IsPlayerSpouse(queriedHero) && queriedHero.Mother == queriedHero)
             {
                 textObject = (!queriedHero.IsFemale ? GameTexts.FindText("str_husband_motherinlaw", null) : GameTexts.FindText("str_wife_motherinlaw", null));
             }
-            else if (GetPlayerSpouses().Any((Hero spouse) => spouse.Siblings.Contains(queriedHero)))
+            else if (baseHero == Hero.MainHero && GetPlayerSpouses().Any((Hero spouse) => spouse.Siblings.Contains(queriedHero)))
             {
                 textObject = (baseHero.IsFemale ? GameTexts.FindText(queriedHero.IsFemale ? "str_husband_sisterinlaw" : "str_husband_brotherinlaw", null) : GameTexts.FindText(queriedHero.IsFemale ? "str_wife_sisterinlaw" : "str_wife_brotherinlaw", null));
             }

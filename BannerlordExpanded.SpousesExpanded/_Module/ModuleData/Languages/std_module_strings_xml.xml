@@ -18,5 +18,27 @@
 		
 		<string id="BannerlordExpandedSpousesExpanded_SpouseDialog_SetMainSpouse_AreYourSure_Result_Yes_After" text="I am more than happy to!" />
 	
+		<!-- Marriage Offer For Player-->
+		<!-- all using in-game text-->
+		
+		<!-- Don't Want Eldest Member -->
+		<string id="BannerlordExpandedSpousesExpanded_DontWantEldestMember_Start" text="I was thinking of someone else..." />
+		<string id="BannerlordExpandedSpousesExpanded_DontWantEldestMember_Continue" text="Who do you have in mind?" />
+		<string id="BannerlordExpandedSpousesExpanded_DontWantEldestMember_Continue2" text="I see. So you are interested in {HERO_NAME}?" />
+		<string id="BannerlordExpandedSpousesExpanded_DontWantEldestMember_ContinueFailed" text="Do you have no one in mind?" />
+		<string id="BannerlordExpandedSpousesExpanded_DontWantEldestMember_Continue_Success_ReplyConfirm" text="Yes I am interested!" />
+		<string id="BannerlordExpandedSpousesExpanded_DontWantEldestMember_Continue_Success_ReplyCancel" text="Sorry.. I am having second thoughts. Let me consider for a while..." />
+		
+		<string id="BannerlordExpandedSpousesExpanded_DontWantYourEldestMember_GameMenu_Title" text="Who would you prefer?" />
+		<string id="annerlordExpandedSpousesExpanded_DontWantYourEldestMember_GameMenu_Desc" text="Select Lord/Lady that you want to be the spouse of your selected clan member." />
+		<string id="annerlordExpandedSpousesExpanded_DontWantYourEldestMember_GameMenu_Confirm" text="Confirm" />
+		<string id="annerlordExpandedSpousesExpanded_DontWantYourEldestMember_GameMenu_Cancel" text="Cancel" />
+		
+		<!-- Divorce -->
+		<string id="BannerlordExpandedSpousesExpanded_SpouseDialog_Divorce" text="I am tired of our marriage. Let's divorce and go our separate ways." />
+		<string id="BannerlordExpandedSpousesExpanded_SpouseDialog_DivorceConfirmation" text="A-Are you sure about this?" />
+		<string id="BannerlordExpandedSpousesExpanded_SpouseDialog_DivorceConfirmation_Yes" text="Yes, I am sure." />
+		<string id="BannerlordExpandedSpousesExpanded_SpouseDialog_DivorceConfirmation_No" text="No, I was just joking with you!" />
+		
 	</strings>
 </base>

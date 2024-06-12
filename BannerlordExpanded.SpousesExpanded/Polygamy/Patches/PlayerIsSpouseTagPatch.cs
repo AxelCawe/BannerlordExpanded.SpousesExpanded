@@ -1,4 +1,5 @@
-﻿using HarmonyLib;
+﻿using BannerlordExpanded.SpousesExpanded.Utility;
+using HarmonyLib;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.Conversation.Tags;
 
@@ -13,7 +14,7 @@ namespace BannerlordExpanded.SpousesExpanded.Polygamy.Patches
         {
             if (!__result)
             {
-                __result = (character.IsHero && Hero.MainHero.ExSpouses.Contains(character.HeroObject));
+                __result = (character.IsHero && SpousesExpandedUtil.IsPlayerSpouse(character.HeroObject));
             }
         }
     }

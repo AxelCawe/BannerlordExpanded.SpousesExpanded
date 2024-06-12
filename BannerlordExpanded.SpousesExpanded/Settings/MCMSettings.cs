@@ -16,10 +16,20 @@ namespace BannerlordExpanded.SpousesExpanded.Settings
 
 
 
-        [SettingPropertyGroup("{=BE_SE_Settings_Polygamy}Companion To Family Conversations", GroupOrder = 0)]
-        [SettingPropertyBool("{=BE_SE_Settings_PolygamyEnabled}Enable Disown Children Conversation", RequireRestart = true, IsToggle = true)]
+        [SettingPropertyGroup("{=BannerlordExpandedSpousesExpanded_Settings_Polygamy}Player Polygamy", GroupOrder = 0)]
+        [SettingPropertyBool("{=BannerlordExpandedSpousesExpanded_Settings_PolygamyEnabled}Enable", RequireRestart = true, IsToggle = true)]
         public bool PolygamyEnabled { get; set; } = true;
 
+        [SettingPropertyGroup("{=BannerlordExpandedSpousesExpanded_Settings_DontWantEldestMember}I Dont Want Your Eldest Member", GroupOrder = 1)]
+        [SettingPropertyBool("{=BannerlordExpandedSpousesExpanded_Settings_DontWantEldestMemberEnabled}Enable", RequireRestart = true, IsToggle = true)]
+        public bool DontWantEldestMemberEnabled { get; set; } = true;
 
+        [SettingPropertyGroup("{=BannerlordExpandedSpousesExpanded_Settings_MarriageOfferForPlayer}Marriage Offer For Player", GroupOrder = 1)]
+        [SettingPropertyBool("{=BannerlordExpandedSpousesExpanded_Settings_MarriageOfferForPlayerEnabled}Enable", RequireRestart = true, IsToggle = true)]
+        public bool MarriageOfferForPlayerEnabled { get; set; } = true;
+
+        [SettingPropertyGroup("{=BannerlordExpandedSpousesExpanded_Settings_Divorce}Player Divorce", GroupOrder = 1)]
+        [SettingPropertyBool("{=BannerlordExpandedSpousesExpanded_Settings_DivorceEnabled}Enable", RequireRestart = true, IsToggle = true)]
+        public bool DivorceEnabled { get; set; } = true;
     }
 }

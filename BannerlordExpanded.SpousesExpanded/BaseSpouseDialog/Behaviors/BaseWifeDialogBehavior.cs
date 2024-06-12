@@ -27,7 +27,7 @@ namespace BannerlordExpanded.SpousesExpanded.BaseSpouseDialog.Behaviors
             gameStarter.AddPlayerLine("BannerlordExpandedSpousesExpanded_SpouseDialog", "hero_main_options", "BannerlordExpandedSpousesExpanded_SpouseDialog", "{=BannerlordExpandedSpousesExpanded_SpouseDialog}{?SPOUSE.GENDER}My wife{?}My husband{\\?}, I would like to talk to you about something.",
                 () =>
                 {
-                    if (SpousesExpandedUtil.IsPlayerSpouse(Hero.OneToOneConversationHero))
+                    if (!SpousesExpandedUtil.IsPlayerSpouse(Hero.OneToOneConversationHero))
                         return false;
                     StringHelpers.SetCharacterProperties("SPOUSE", Hero.OneToOneConversationHero.CharacterObject, null, false);
                     return true;
