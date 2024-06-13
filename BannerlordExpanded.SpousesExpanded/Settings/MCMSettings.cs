@@ -21,7 +21,7 @@ namespace BannerlordExpanded.SpousesExpanded.Settings
         public bool PolygamyEnabled { get; set; } = true;
 
         [SettingPropertyGroup("{=BannerlordExpandedSpousesExpanded_Settings_DontWantEldestMember}I Dont Want Your Eldest Member", GroupOrder = 1)]
-        [SettingPropertyBool("{=BannerlordExpandedSpousesExpanded_Settings_DontWantEldestMemberEnabled}Enable", RequireRestart = true, IsToggle = true)]
+        [SettingPropertyBool("{=BannerlordExpandedSpousesExpanded_Settings_DontWantEldestMemberEnabled}Enable", HintText = "{=BannerlordExpandedSpousesExpanded_Settings_DontWantEldestMemberEnabled_Desc}Enable the option to choose any of the clan's marry-able characters for marriage instead of only the oldest one.", RequireRestart = true, IsToggle = true)]
         public bool DontWantEldestMemberEnabled { get; set; } = true;
 
         [SettingPropertyGroup("{=BannerlordExpandedSpousesExpanded_Settings_MarriageOfferForPlayer}Marriage Offer For Player", GroupOrder = 1)]

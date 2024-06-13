@@ -19,7 +19,7 @@
 		<string id="BannerlordExpandedSpousesExpanded_SpouseDialog_SetMainSpouse_AreYourSure_Result_Yes_After" text="I am more than happy to!" />
 	
 		<!-- Marriage Offer For Player-->
-		<!-- all using in-game text-->
+		<!-- No text to translate, module is patched to use vanilla game logic-->
 		
 		<!-- Don't Want Eldest Member -->
 		<string id="BannerlordExpandedSpousesExpanded_DontWantEldestMember_Start" text="I was thinking of someone else..." />
@@ -40,5 +40,18 @@
 		<string id="BannerlordExpandedSpousesExpanded_SpouseDialog_DivorceConfirmation_Yes" text="Yes, I am sure." />
 		<string id="BannerlordExpandedSpousesExpanded_SpouseDialog_DivorceConfirmation_No" text="No, I was just joking with you!" />
 		
+		<!-- Settings -->
+		<string id="BannerlordExpandedSpousesExpanded_Settings_Polygamy" text="Player Polygamy" />
+		<string id="BannerlordExpandedSpousesExpanded_Settings_PolygamyEnabled" text="Enable" />
+		
+		<string id="BannerlordExpandedSpousesExpanded_Settings_DontWantEldestMember" text="I Dont Want Your Eldest Member" />
+		<string id="BannerlordExpandedSpousesExpanded_Settings_DontWantEldestMemberEnabled" text="Enable" />
+		<string id="BannerlordExpandedSpousesExpanded_Settings_DontWantEldestMemberEnabled_Desc" text="Enable the option to choose any of the clan's marry-able characters for marriage instead of only the oldest one." />
+		
+		<string id="BannerlordExpandedSpousesExpanded_Settings_MarriageOfferForPlayer" text="Marriage Offer For Player" />
+		<string id="BannerlordExpandedSpousesExpanded_Settings_MarriageOfferForPlayerEnabled" text="Enable" />
+		
+		<string id="BannerlordExpandedSpousesExpanded_Settings_Divorce" text="Player Divorce" />
+		<string id="BannerlordExpandedSpousesExpanded_Settings_DivorceEnabled" text="Enable" />	
 	</strings>
 </base>
