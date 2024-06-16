@@ -42,7 +42,7 @@ namespace BannerlordExpanded.SpousesExpanded.MarriageOfferForPlayer.Behaviors
             if (_considerMarriageForPlayerClanMemberMethod == null)
                 _considerMarriageForPlayerClanMemberMethod = typeof(MarriageOfferCampaignBehavior).GetMethod("ConsiderMarriageForPlayerClanMember", BindingFlags.NonPublic | BindingFlags.Instance);
 
-            return (bool)_considerMarriageForPlayerClanMemberMethod.Invoke(_marriageOfferCampaignBehavior, new object[] { Hero.MainHero, consideringClan });
+            return (bool)_considerMarriageForPlayerClanMemberMethod.Invoke(GetMarriageOfferCampaignBehavior(), new object[] { Hero.MainHero, consideringClan });
         }
 
         private bool CanOfferMarriageForClan(Clan consideringClan)
@@ -51,7 +51,15 @@ namespace BannerlordExpanded.SpousesExpanded.MarriageOfferForPlayer.Behaviors
             if (_canOfferMarriageForClanMethod == null)
                 _canOfferMarriageForClanMethod = typeof(MarriageOfferCampaignBehavior).GetMethod("CanOfferMarriageForClan", BindingFlags.NonPublic | BindingFlags.Instance);
 
-            return (bool)_canOfferMarriageForClanMethod.Invoke(_marriageOfferCampaignBehavior, new object[] { consideringClan });
+            return (bool)_canOfferMarriageForClanMethod.Invoke(GetMarriageOfferCampaignBehavior(), new object[] { consideringClan });
+        }
+
+        public MarriageOfferCampaignBehavior GetMarriageOfferCampaignBehavior(bool reset = false)
+        {
+            if (_marriageOfferCampaignBehavior == null || reset)
+                _marriageOfferCampaignBehavior = GetCampaignBehavior<MarriageOfferCampaignBehavior>();
+
+            return _marriageOfferCampaignBehavior;
         }
     }
 }
