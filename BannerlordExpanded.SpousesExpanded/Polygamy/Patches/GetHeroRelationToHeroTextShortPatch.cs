@@ -26,6 +26,11 @@ namespace BannerlordExpanded.SpousesExpanded.Polygamy.Patches
         [HarmonyPostfix]
         static void Postfix(ref string __result, Hero queriedHero, Hero baseHero, bool uppercaseFirst)
         {
+            if (Campaign.Current.GetCampaignBehavior<PlayerPolygamyBehavior>() == null || queriedHero == null || baseHero == null)
+            {
+                return;
+            }
+
             TextObject textObject = null;
 
             if (baseHero == Hero.MainHero && IsPlayerSpouse(queriedHero) || queriedHero == Hero.MainHero && IsPlayerSpouse(baseHero))
@@ -40,7 +45,7 @@ namespace BannerlordExpanded.SpousesExpanded.Polygamy.Patches
             {
                 textObject = (!queriedHero.IsFemale ? GameTexts.FindText("str_husband_motherinlaw", null) : GameTexts.FindText("str_wife_motherinlaw", null));
             }
-            else if (baseHero == Hero.MainHero && GetPlayerSpouses().Any((Hero spouse) => spouse.Siblings.Contains(queriedHero)))
+            else if (baseHero == Hero.MainHero && GetPlayerSpouses() != null && GetPlayerSpouses().Any((Hero spouse) => spouse.Siblings.Contains(queriedHero)))
             {
                 textObject = (baseHero.IsFemale ? GameTexts.FindText(queriedHero.IsFemale ? "str_husband_sisterinlaw" : "str_husband_brotherinlaw", null) : GameTexts.FindText(queriedHero.IsFemale ? "str_wife_sisterinlaw" : "str_wife_brotherinlaw", null));
             }
