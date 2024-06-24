@@ -34,7 +34,8 @@ namespace BannerlordExpanded.SpousesExpanded
 
             if (MCMSettings.Instance.PolygamyEnabled)
                 harmony.PatchCategory(Assembly.GetExecutingAssembly(), "PolygamyModule");
-            harmony.PatchCategory(Assembly.GetExecutingAssembly(), "PregnancyAge");
+            if (MCMSettings.Instance.PregnancyAgeEnabled)
+                harmony.PatchCategory(Assembly.GetExecutingAssembly(), "PregnancyAge");
             //harmony.PatchAll(Assembly.GetExecutingAssembly());
         }
 
