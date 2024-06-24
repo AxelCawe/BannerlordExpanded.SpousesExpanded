@@ -50,7 +50,7 @@ namespace BannerlordExpanded.SpousesExpanded.PregnancyAge.Patches
         [HarmonyTranspiler]
         static IEnumerable<CodeInstruction> Transpiler2(IEnumerable<CodeInstruction> instructions)
         {
-            InformationManager.DisplayMessage(new InformationMessage("[BE - Spouses Expanded] Patching in progress..."));
+
             bool patch1 = false, patch2 = false;
             foreach (var instruction in instructions)
             {
