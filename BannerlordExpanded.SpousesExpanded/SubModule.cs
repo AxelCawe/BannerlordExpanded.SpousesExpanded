@@ -34,6 +34,7 @@ namespace BannerlordExpanded.SpousesExpanded
 
             if (MCMSettings.Instance.PolygamyEnabled)
                 harmony.PatchCategory(Assembly.GetExecutingAssembly(), "PolygamyModule");
+            harmony.PatchCategory(Assembly.GetExecutingAssembly(), "PregnancyAge");
             //harmony.PatchAll(Assembly.GetExecutingAssembly());
         }
 
@@ -65,6 +66,7 @@ namespace BannerlordExpanded.SpousesExpanded
             {
                 gameStarter.AddBehavior(new PlayerDivorceBehavior());
             }
+
         }
     }
 }

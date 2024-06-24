@@ -31,5 +31,17 @@ namespace BannerlordExpanded.SpousesExpanded.Settings
         [SettingPropertyGroup("{=BannerlordExpandedSpousesExpanded_Settings_Divorce}Player Divorce", GroupOrder = 1)]
         [SettingPropertyBool("{=BannerlordExpandedSpousesExpanded_Settings_DivorceEnabled}Enable", RequireRestart = true, IsToggle = true)]
         public bool DivorceEnabled { get; set; } = true;
+
+        [SettingPropertyGroup("{=BannerlordExpandedSpousesExpanded_Settings_PregnancyAge}Custom Pregnancy Age Range", GroupOrder = 1)]
+        [SettingPropertyBool("{=BannerlordExpandedSpousesExpanded_Settings_PregnancyAge}Custom Pregnancy Age Range", RequireRestart = true, IsToggle = true)]
+        public bool PregnancyAgeEnabled { get; set; } = true;
+
+        [SettingPropertyGroup("{=BannerlordExpandedSpousesExpanded_Settings_PregnancyAge}Custom Pregnancy Age Range", GroupOrder = 2)]
+        [SettingPropertyInteger("{=BannerlordExpandedSpousesExpanded_Settings_PregnancyAgeMin}Minimum Age for Pregnancy", 0, 100, HintText = "{=BannerlordExpandedSpousesExpanded_Settings_PregnancyAgeMin_Desc}Must be below Max Age to avoid errors!", RequireRestart = true)]
+        public int PregnancyAgeMin { get; set; } = 18;
+
+        [SettingPropertyGroup("{=BannerlordExpandedSpousesExpanded_Settings_PregnancyAge}Custom Pregnancy Age Range", GroupOrder = 2)]
+        [SettingPropertyInteger("{=BannerlordExpandedSpousesExpanded_Settings_PregnancyAgeMax}Maxmimum Age for Pregnancy", 0, 100, HintText = "{=BannerlordExpandedSpousesExpanded_Settings_PregnancyAgeMax_Desc}Must be above Min Age to avoid errors!", RequireRestart = true)]
+        public int PregnancyAgeMax { get; set; } = 45;
     }
 }

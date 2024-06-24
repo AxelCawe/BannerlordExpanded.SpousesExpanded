@@ -52,6 +52,10 @@
 		<string id="BannerlordExpandedSpousesExpanded_Settings_MarriageOfferForPlayerEnabled" text="Enable" />
 		
 		<string id="BannerlordExpandedSpousesExpanded_Settings_Divorce" text="Player Divorce" />
-		<string id="BannerlordExpandedSpousesExpanded_Settings_DivorceEnabled" text="Enable" />	
+		<string id="BannerlordExpandedSpousesExpanded_Settings_DivorceEnabled" text="Enable" />
+
+		<string id="BannerlordExpandedSpousesExpanded_Settings_PregnancyAge" text="Custom Pregnancy Age Range" />
+		<string id="BannerlordExpandedSpousesExpanded_Settings_PregnancyAgeMin" text="Minimum Age for Pregnancy" />
+		<string id="BannerlordExpandedSpousesExpanded_Settings_PregnancyAgeMax" text="Maxmimum Age for Pregnancy" />
 	</strings>
 </base>
