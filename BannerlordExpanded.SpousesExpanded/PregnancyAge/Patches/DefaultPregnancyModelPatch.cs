@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Reflection.Emit;
 using TaleWorlds.CampaignSystem.GameComponents;
 using TaleWorlds.Library;
+using TaleWorlds.TwoDimension;
 
 namespace BannerlordExpanded.SpousesExpanded.PregnancyAge.Patches
 {
@@ -57,14 +58,14 @@ namespace BannerlordExpanded.SpousesExpanded.PregnancyAge.Patches
                 if (instruction.opcode == OpCodes.Ldc_R4)
                 {
                     float value = (float)instruction.operand;
-                    if (value == 45f)
+                    if (EqualFloat(value, 45f))
                     {
                         instruction.operand = maxAge;
                         yield return instruction;
                         patch1 = true;
                         //InformationManager.DisplayMessage(new InformationMessage("Patched magic number"));
                     }
-                    else if (value == 18f)
+                    else if (EqualFloat(value, 18f))
                     {
                         instruction.operand = minAge;
                         yield return instruction;
@@ -89,5 +90,13 @@ namespace BannerlordExpanded.SpousesExpanded.PregnancyAge.Patches
 
         static float maxAge { get { return MCMSettings.Instance.PregnancyAgeMax; } }
         static float minAge { get { return MCMSettings.Instance.PregnancyAgeMin; } }
+
+        static bool EqualFloat(float a, float b)
+        {
+            if (a == b) return true;
+
+            return Mathf.Abs(a - b) < float.Epsilon;
+
+        }
     }
 }
