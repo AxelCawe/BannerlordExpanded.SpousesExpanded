@@ -1,10 +1,10 @@
 ﻿using BannerlordExpanded.SpousesExpanded.Settings;
 using HarmonyLib;
+using System;
 using System.Collections.Generic;
 using System.Reflection.Emit;
 using TaleWorlds.CampaignSystem.GameComponents;
 using TaleWorlds.Library;
-using TaleWorlds.TwoDimension;
 
 namespace BannerlordExpanded.SpousesExpanded.PregnancyAge.Patches
 {
@@ -93,10 +93,33 @@ namespace BannerlordExpanded.SpousesExpanded.PregnancyAge.Patches
 
         static bool EqualFloat(float a, float b)
         {
-            if (a == b) return true;
+            //if (a == b) return true;
 
-            return Mathf.Abs(a - b) < float.Epsilon;
+            //return Mathf.Abs(a - b) < float.Epsilon;
+            return NearlyEqual(a, b, 0.0001f);
+        }
 
+        public static bool NearlyEqual(float a, float b, float epsilon)
+        {
+            const float MinNormal = 2.2250738585072014E-308f;
+            double absA = Math.Abs(a);
+            double absB = Math.Abs(b);
+            double diff = Math.Abs(a - b);
+
+            if (a.Equals(b))
+            { // shortcut, handles infinities
+                return true;
+            }
+            else if (a == 0 || b == 0 || absA + absB < MinNormal)
+            {
+                // a or b is zero or both are extremely close to it
+                // relative error is less meaningful here
+                return diff < (epsilon * MinNormal);
+            }
+            else
+            { // use relative error
+                return diff / (absA + absB) < epsilon;
+            }
         }
     }
 }
