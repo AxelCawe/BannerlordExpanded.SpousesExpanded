@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using BannerlordExpanded.SpousesExpanded.Utility;
+using System.Collections.Generic;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
@@ -32,9 +33,16 @@ namespace BannerlordExpanded.SpousesExpanded.Polygamy.Behaviors
 
         public bool IsSpouse(Hero hero)
         {
-            MBList<Hero> spouses;
+            if (Hero.MainHero.Spouse == hero || hero.Spouse == Hero.MainHero)
+            {
 
-            return (_secondarySpouses.TryGetValue(Hero.MainHero, out spouses) && spouses.Contains(hero)) || (Hero.MainHero.Spouse != null && hero == Hero.MainHero.Spouse);
+                return true;
+            }
+            else
+            {
+                MBList<Hero> spouses;
+                return (_secondarySpouses.TryGetValue(Hero.MainHero, out spouses) && spouses.Contains(hero));
+            }
         }
 
         public void SetPrimarySpouse(Hero hero)
@@ -54,8 +62,8 @@ namespace BannerlordExpanded.SpousesExpanded.Polygamy.Behaviors
                     spouses.Remove(hero);
                     spouses.Add(Hero.MainHero.Spouse);
 
-                    Hero.MainHero.Spouse = hero;
-                    hero.Spouse = Hero.MainHero;
+                    SpousesExpandedUtil.SetHeroSpouse(Hero.MainHero, hero);
+                    SpousesExpandedUtil.SetHeroSpouse(hero, Hero.MainHero);
                 }
 
 
@@ -70,11 +78,12 @@ namespace BannerlordExpanded.SpousesExpanded.Polygamy.Behaviors
                 spouses = new MBList<Hero>();
                 _secondarySpouses.Add(Hero.MainHero, spouses);
             }
-            return new MBList<Hero>(spouses);
+            return spouses;
         }
 
         public void AddSpouse(Hero hero)
         {
+
             MBList<Hero> spouses;
             if (!_secondarySpouses.TryGetValue(Hero.MainHero, out spouses))
             {
@@ -94,10 +103,12 @@ namespace BannerlordExpanded.SpousesExpanded.Polygamy.Behaviors
 
             if (Hero.MainHero.Spouse == hero)
             {
-                if (_secondarySpouses.Count > 0)
-                    Hero.MainHero.Spouse = spouses[0];
+                if (spouses.Count > 0)
+                {
+                    SpousesExpandedUtil.SetHeroSpouse(Hero.MainHero, spouses[0]);
+                }
                 else
-                    Hero.MainHero.Spouse = null;
+                    SpousesExpandedUtil.SetHeroSpouse(Hero.MainHero, null);
                 return true;
             }
             else if (spouses.Contains(hero))

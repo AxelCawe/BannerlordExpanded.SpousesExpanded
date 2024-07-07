@@ -1,4 +1,5 @@
 ﻿using BannerlordExpanded.SpousesExpanded.Polygamy.Behaviors;
+using BannerlordExpanded.SpousesExpanded.Utility;
 using HarmonyLib;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.Actions;
@@ -17,7 +18,8 @@ namespace BannerlordExpanded.SpousesExpanded.Polygamy.Patches
                 if (Hero.MainHero.Spouse != null)
                 {
                     Campaign.Current.GetCampaignBehavior<PlayerPolygamyBehavior>().AddSpouse(Hero.MainHero.Spouse);
-                    Hero.MainHero.Spouse = null;
+                    SpousesExpandedUtil.SetHeroSpouse(Hero.MainHero, null);
+                    //Hero.MainHero.Spouse = null;
                 }
 
             }

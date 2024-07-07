@@ -1,5 +1,6 @@
 ﻿using BannerlordExpanded.SpousesExpanded.Polygamy.Behaviors;
 using BannerlordExpanded.SpousesExpanded.Settings;
+using System.Reflection;
 using TaleWorlds.CampaignSystem;
 
 namespace BannerlordExpanded.SpousesExpanded.Utility
@@ -40,6 +41,12 @@ namespace BannerlordExpanded.SpousesExpanded.Utility
             if (success)
                 hero.Spouse = null;
             return success;
+        }
+
+        public static void SetHeroSpouse(Hero mainHero, Hero spouse)
+        {
+            FieldInfo spouseField = typeof(Hero).GetField("_spouse", BindingFlags.Instance | BindingFlags.NonPublic);
+            spouseField.SetValue(mainHero, spouse);
         }
     }
 }

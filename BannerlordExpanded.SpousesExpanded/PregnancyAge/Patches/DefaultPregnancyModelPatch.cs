@@ -12,38 +12,51 @@ namespace BannerlordExpanded.SpousesExpanded.PregnancyAge.Patches
     [HarmonyPatch]
     public static class DefaultPregnancyModelPatch
     {
+        static bool firstPatchPatched = false;
+        static bool secondPatchPatched = false;
+
         [HarmonyPatch(typeof(DefaultPregnancyModel), "GetDailyChanceOfPregnancyForHero")]
         static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
-            bool patch1 = false, patch2 = false;
-            foreach (var instruction in instructions)
+            if (!firstPatchPatched)
             {
-                if (instruction.opcode == OpCodes.Ldc_R4)
-                {
-                    float value = (float)instruction.operand;
-                    if (value == 1.2f)
-                    {
-                        instruction.operand = GetMagicNumber();
-                        yield return instruction;
-                        patch1 = true;
-                        //InformationManager.DisplayMessage(new InformationMessage("Patched magic number"));
-                    }
-                    else if (value == 18f)
-                    {
-                        instruction.operand = minAge;
-                        yield return instruction;
-                        patch2 = true;
-                        //InformationManager.DisplayMessage(new InformationMessage("Patched min age;"));
-                    }
-                    else yield return instruction;
-                }
-                else
+                foreach (var instruction in instructions)
                     yield return instruction;
             }
-
-            if (!patch1 || !patch2)
+            else
             {
-                InformationManager.DisplayMessage(new InformationMessage("[BE - Spouses Expanded] ERROR: Failed to patch Pregnancy Ages!\nPossible mod conflict or this mod is outdated."));
+                bool patch1 = false, patch2 = false;
+                foreach (var instruction in instructions)
+                {
+                    if (instruction.opcode == OpCodes.Ldc_R4)
+                    {
+                        float value = (float)instruction.operand;
+                        if (value == 1.2f)
+                        {
+                            instruction.operand = GetMagicNumber();
+                            yield return instruction;
+                            patch1 = true;
+                            //InformationManager.DisplayMessage(new InformationMessage("Patched magic number"));
+                        }
+                        else if (value == 18f)
+                        {
+                            instruction.operand = minAge;
+                            yield return instruction;
+                            patch2 = true;
+                            //InformationManager.DisplayMessage(new InformationMessage("Patched min age;"));
+                        }
+                        else yield return instruction;
+                    }
+                    else
+                        yield return instruction;
+                }
+
+                if (!patch1 || !patch2)
+                {
+                    InformationManager.DisplayMessage(new InformationMessage("[BE - Spouses Expanded] ERROR: Failed to patch Pregnancy Ages!\nPossible mod conflict or this mod is outdated."));
+                }
+                else
+                    firstPatchPatched = true;
             }
         }
 
@@ -51,35 +64,46 @@ namespace BannerlordExpanded.SpousesExpanded.PregnancyAge.Patches
         [HarmonyTranspiler]
         static IEnumerable<CodeInstruction> Transpiler2(IEnumerable<CodeInstruction> instructions)
         {
-
-            bool patch1 = false, patch2 = false;
-            foreach (var instruction in instructions)
+            if (!secondPatchPatched)
             {
-                if (instruction.opcode == OpCodes.Ldc_R4)
-                {
-                    float value = (float)instruction.operand;
-                    if (EqualFloat(value, 45f))
-                    {
-                        instruction.operand = maxAge;
-                        yield return instruction;
-                        patch1 = true;
-                        //InformationManager.DisplayMessage(new InformationMessage("Patched magic number"));
-                    }
-                    else if (EqualFloat(value, 18f))
-                    {
-                        instruction.operand = minAge;
-                        yield return instruction;
-                        patch2 = true;
-                        //InformationManager.DisplayMessage(new InformationMessage("Patched min age;"));
-                    }
-                    else yield return instruction;
-                }
-                else
+                foreach (var instruction in instructions)
                     yield return instruction;
             }
-            if (!patch1 || !patch2)
+            else
             {
-                InformationManager.DisplayMessage(new InformationMessage("[BE - Spouses Expanded] ERROR: Failed to patch Pregnancy Ages!\nPossible mod conflict or this mod is outdated."));
+
+
+                bool patch1 = false, patch2 = false;
+                foreach (var instruction in instructions)
+                {
+                    if (instruction.opcode == OpCodes.Ldc_R4)
+                    {
+                        float value = (float)instruction.operand;
+                        if (EqualFloat(value, 45f))
+                        {
+                            instruction.operand = maxAge;
+                            yield return instruction;
+                            patch1 = true;
+                            //InformationManager.DisplayMessage(new InformationMessage("Patched magic number"));
+                        }
+                        else if (EqualFloat(value, 18f))
+                        {
+                            instruction.operand = minAge;
+                            yield return instruction;
+                            patch2 = true;
+                            //InformationManager.DisplayMessage(new InformationMessage("Patched min age;"));
+                        }
+                        else yield return instruction;
+                    }
+                    else
+                        yield return instruction;
+                }
+                if (!patch1 || !patch2)
+                {
+                    InformationManager.DisplayMessage(new InformationMessage("[BE - Spouses Expanded] ERROR: Failed to patch Pregnancy Ages!\nPossible mod conflict or this mod is outdated."));
+                }
+                else
+                    secondPatchPatched = true;
             }
         }
 
@@ -96,7 +120,7 @@ namespace BannerlordExpanded.SpousesExpanded.PregnancyAge.Patches
             //if (a == b) return true;
 
             //return Mathf.Abs(a - b) < float.Epsilon;
-            return NearlyEqual(a, b, 0.0001f);
+            return NearlyEqual(a, b, 0.01f);
         }
 
         public static bool NearlyEqual(float a, float b, float epsilon)
