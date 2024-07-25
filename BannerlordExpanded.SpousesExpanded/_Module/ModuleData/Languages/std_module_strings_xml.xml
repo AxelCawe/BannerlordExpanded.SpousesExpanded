@@ -24,7 +24,7 @@
 		<!-- Don't Want Eldest Member -->
 		<string id="BannerlordExpandedSpousesExpanded_DontWantEldestMember_Start" text="I was thinking of someone else..." />
 		<string id="BannerlordExpandedSpousesExpanded_DontWantEldestMember_Continue" text="Who do you have in mind?" />
-		<string id="BannerlordExpandedSpousesExpanded_DontWantEldestMember_Continue2" text="I see. So you are interested in {HERO_NAME}?" />
+		<string id="BannerlordExpandedSpousesExpanded_DontWantEldestMember_Continue2" text="I see. So you are interested in {HERO.LINK}?" />
 		<string id="BannerlordExpandedSpousesExpanded_DontWantEldestMember_ContinueFailed" text="Do you have no one in mind?" />
 		<string id="BannerlordExpandedSpousesExpanded_DontWantEldestMember_Continue_Success_ReplyConfirm" text="Yes I am interested!" />
 		<string id="BannerlordExpandedSpousesExpanded_DontWantEldestMember_Continue_Success_ReplyCancel" text="Sorry.. I am having second thoughts. Let me consider for a while..." />

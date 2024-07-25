@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Helpers;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using TaleWorlds.CampaignSystem;
@@ -32,7 +33,7 @@ namespace BannerlordExpanded.SpousesExpanded.Behaviors
             gameStarter.AddPlayerLine("BannerlordExpandedSpousesExpanded_DontWantEldestMember_Start", "lord_propose_marriage_to_clan_leader_response_self", "BannerlordExpandedSpousesExpanded_DontWantEldestMember_Continue", "{=BannerlordExpandedSpousesExpanded_DontWantEldestMember_Start}I was thinking of someone else...", () => IsGoodToShowDialog(), () => OpenInquiryMenu(), 101, null, null);
 
             gameStarter.AddDialogLine("BannerlordExpandedSpousesExpanded_DontWantEldestMember_Continue", "BannerlordExpandedSpousesExpanded_DontWantEldestMember_Continue", "BannerlordExpandedSpousesExpanded_DontWantEldestMember_Continue2", "{=BannerlordExpandedSpousesExpanded_DontWantEldestMember_Continue}Who do you have in mind?", null, null, 100, null);
-            gameStarter.AddDialogLine("BannerlordExpandedSpousesExpanded_DontWantEldestMember_Continue_Success", "BannerlordExpandedSpousesExpanded_DontWantEldestMember_Continue2", "BannerlordExpandedSpousesExpanded_DontWantEldestMember_Continue_Success_Reply", "{=BannerlordExpandedSpousesExpanded_DontWantEldestMember_Continue2}I see. So you are interested in {HERO_NAME}?", () => IsSpouseCandidateValid(), null, 100, null);
+            gameStarter.AddDialogLine("BannerlordExpandedSpousesExpanded_DontWantEldestMember_Continue_Success", "BannerlordExpandedSpousesExpanded_DontWantEldestMember_Continue2", "BannerlordExpandedSpousesExpanded_DontWantEldestMember_Continue_Success_Reply", "{=BannerlordExpandedSpousesExpanded_DontWantEldestMember_Continue2}I see. So you are interested in {HERO.LINK}?", () => IsSpouseCandidateValid(), null, 100, null);
             gameStarter.AddDialogLine("BannerlordExpandedSpousesExpanded_DontWantEldestMember_Continue_Failed", "BannerlordExpandedSpousesExpanded_DontWantEldestMember_Continue2", "lord_pretalk", "{=BannerlordExpandedSpousesExpanded_DontWantEldestMember_ContinueFailed}Do you have no one in mind?", () => !_isSpouseCandidateValid, null, 100, null);
 
             gameStarter.AddPlayerLine("BannerlordExpandedSpousesExpanded_DontWantEldestMember_Continue_Success_ReplyConfirm", "BannerlordExpandedSpousesExpanded_DontWantEldestMember_Continue_Success_Reply", "lord_propose_marriage_to_clan_leader_confirm", "{=BannerlordExpandedSpousesExpanded_DontWantEldestMember_Continue_Success_ReplyConfirm}Yes I am interested!", null, null, 100, null, null);
@@ -57,6 +58,7 @@ namespace BannerlordExpanded.SpousesExpanded.Behaviors
                 {
                     Hero spouseCandidateHero = spouseCandidate as Hero;
                     MBTextManager.SetTextVariable("HERO_NAME", spouseCandidateHero.Name, false);
+                    StringHelpers.SetCharacterProperties("HERO", spouseCandidateHero.CharacterObject);
                     return true;
                 }
                 else return false;
