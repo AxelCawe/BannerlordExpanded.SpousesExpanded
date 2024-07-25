@@ -43,5 +43,9 @@ namespace BannerlordExpanded.SpousesExpanded.Settings
         [SettingPropertyGroup("{=BannerlordExpandedSpousesExpanded_Settings_PregnancyAge}Custom Pregnancy Age Range", GroupOrder = 4)]
         [SettingPropertyInteger("{=BannerlordExpandedSpousesExpanded_Settings_PregnancyAgeMax}Maxmimum Age for Pregnancy", 18, 250, HintText = "{=BannerlordExpandedSpousesExpanded_Settings_PregnancyAgeMax_Desc}Must be above Min Age to avoid errors!", RequireRestart = true)]
         public int PregnancyAgeMax { get; set; } = 45;
+
+        public bool PregnancyDurationEnabled { get; set; } = true;
+        public float PregnancyDurationInDays { get; set; } = 36f;
+
     }
 }
