@@ -44,8 +44,41 @@ namespace BannerlordExpanded.SpousesExpanded.Settings
         [SettingPropertyInteger("{=BannerlordExpandedSpousesExpanded_Settings_PregnancyAgeMax}Maxmimum Age for Pregnancy", 18, 250, HintText = "{=BannerlordExpandedSpousesExpanded_Settings_PregnancyAgeMax_Desc}Must be above Min Age to avoid errors!", RequireRestart = true)]
         public int PregnancyAgeMax { get; set; } = 45;
 
+        [SettingPropertyGroup("{=BannerlordExpandedSpousesExpanded_Settings_PregnancyDuration}Custom Pregnancy Duration", GroupOrder = 5)]
+        [SettingPropertyBool("{=BannerlordExpandedSpousesExpanded_Settings_PregnancyDuration}Custom Pregnancy Duration", RequireRestart = true, IsToggle = true)]
         public bool PregnancyDurationEnabled { get; set; } = true;
+        [SettingPropertyGroup("{=BannerlordExpandedSpousesExpanded_Settings_PregnancyDuration}Custom Pregnancy Duration", GroupOrder = 5)]
+        [SettingPropertyFloatingInteger("{=BannerlordExpandedSpousesExpanded_Settings_PregnancyDurationDays}Pregnancy Duration in Days", 1f, 250f)]
         public float PregnancyDurationInDays { get; set; } = 36f;
+
+        [SettingPropertyGroup("{=BannerlordExpandedSpousesExpanded_Settings_MaternalMortality}Custom Maternal Mortality", GroupOrder = 6)]
+        [SettingPropertyBool("{=BannerlordExpandedSpousesExpanded_Settings_MaternalMortality}Custom Maternal Mortality", RequireRestart = true, IsToggle = true)]
+        public bool CustomMortalityInLaborEnabled { get; set; } = true;
+        [SettingPropertyGroup("{=BannerlordExpandedSpousesExpanded_Settings_MaternalMortality}Custom Maternal Mortality", GroupOrder = 6)]
+        [SettingPropertyFloatingInteger("{=BannerlordExpandedSpousesExpanded_Settings_MaternalMortalityChance}Chance of mother dying in childbirth", 0f, 1f)]
+        public float MortalityChanceInLabor { get; set; } = 0.015f;
+
+
+        [SettingPropertyGroup("{=BannerlordExpandedSpousesExpanded_Settings_StillBirth}Custom Still Birth", GroupOrder = 7)]
+        [SettingPropertyBool("{=BannerlordExpandedSpousesExpanded_Settings_StillBirth}Custom Still Birth", RequireRestart = true, IsToggle = true)]
+        public bool CustomStillBirthEnabled { get; set; } = true;
+        [SettingPropertyGroup("{=BannerlordExpandedSpousesExpanded_Settings_StillBirth}Custom Still Birth", GroupOrder = 7)]
+        [SettingPropertyFloatingInteger("{=BannerlordExpandedSpousesExpanded_Settings_StillBirthChance}Chance of baby dying in childbirth", 0f, 1f)]
+        public float StillBirthChance { get; set; } = 0.01f;
+
+        [SettingPropertyGroup("{=BannerlordExpandedSpousesExpanded_Settings_FemaleOffSpring}Custom Female OffSpring Chance", GroupOrder = 8)]
+        [SettingPropertyBool("{=BannerlordExpandedSpousesExpanded_Settings_FemaleOffSpring}Custom Female OffSpring Chance", RequireRestart = true, IsToggle = true)]
+        public bool CustomFemaleOffSpringEnabled { get; set; } = true;
+        [SettingPropertyGroup("{=BannerlordExpandedSpousesExpanded_Settings_FemaleOffSpring}Custom Female OffSpring Chance", GroupOrder = 8)]
+        [SettingPropertyFloatingInteger("{=BannerlordExpandedSpousesExpanded_Settings_FemaleOffSpringChance}Chance of female baby in childbirth", 0f, 1f)]
+        public float FemaleOffSpringChance { get; set; } = 0.51f;
+
+        [SettingPropertyGroup("{=BannerlordExpandedSpousesExpanded_Settings_TwinProbability}Custom Twin Probability", GroupOrder = 8)]
+        [SettingPropertyBool("{=BannerlordExpandedSpousesExpanded_Settings_TwinProbability}Custom Twin Probability", RequireRestart = true, IsToggle = true)]
+        public bool CustomTwinProbabilityEnabled { get; set; } = true;
+        [SettingPropertyGroup("{=BannerlordExpandedSpousesExpanded_Settings_TwinProbability}Custom Twin Probability", GroupOrder = 8)]
+        [SettingPropertyFloatingInteger("{=BannerlordExpandedSpousesExpanded_Settings_TwinProbabilityChance}Chance of twins in childbirth", 0f, 1f)]
+        public float TwinProbabilityChance { get; set; } = 0.03f;
 
     }
 }

@@ -57,5 +57,22 @@
 		<string id="BannerlordExpandedSpousesExpanded_Settings_PregnancyAge" text="Custom Pregnancy Age Range" />
 		<string id="BannerlordExpandedSpousesExpanded_Settings_PregnancyAgeMin" text="Minimum Age for Pregnancy" />
 		<string id="BannerlordExpandedSpousesExpanded_Settings_PregnancyAgeMax" text="Maxmimum Age for Pregnancy" />
+		
+		<string id="BannerlordExpandedSpousesExpanded_Settings_PregnancyDuration" text="Custom Pregnancy Duration" />
+		<string id="BannerlordExpandedSpousesExpanded_Settings_PregnancyDurationDays" text="Pregnancy Duration in Days" />
+		
+		<string id="BannerlordExpandedSpousesExpanded_Settings_MaternalMortality" text="Custom Maternal Mortality" />
+		<string id="BannerlordExpandedSpousesExpanded_Settings_MaternalMortalityChance" text="Chance of mother dying in childbirth" />
+	
+		<string id="BannerlordExpandedSpousesExpanded_Settings_StillBirth" text="Custom Still Birth" />
+		<string id="BannerlordExpandedSpousesExpanded_Settings_StillBirthChance" text="Chance of baby dying in childbirth" />
+		
+		<string id="BannerlordExpandedSpousesExpanded_Settings_FemaleOffSpring" text="Custom Female OffSpring Chance" />
+		<string id="BannerlordExpandedSpousesExpanded_Settings_FemaleOffSpringChance" text="Chance of female baby in childbirth" />
+		
+		<string id="BannerlordExpandedSpousesExpanded_Settings_TwinProbability" text="Custom Twin Probability" />
+		<string id="BannerlordExpandedSpousesExpanded_Settings_TwinProbabilityChance" text="Chance of twins in childbirth" />
+		
+		
 	</strings>
 </base>

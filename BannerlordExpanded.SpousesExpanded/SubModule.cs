@@ -36,8 +36,20 @@ namespace BannerlordExpanded.SpousesExpanded
                 harmony.PatchCategory(Assembly.GetExecutingAssembly(), "PolygamyModule");
             if (MCMSettings.Instance.PregnancyAgeEnabled)
                 harmony.PatchCategory(Assembly.GetExecutingAssembly(), "PregnancyAge");
+            if (MCMSettings.Instance.PregnancyDurationEnabled)
+                harmony.PatchCategory(Assembly.GetExecutingAssembly(), "PregnancyDuration");
+            if (MCMSettings.Instance.CustomFemaleOffSpringEnabled)
+                harmony.PatchCategory(Assembly.GetExecutingAssembly(), "FemaleOffSpring");
+            if (MCMSettings.Instance.CustomMortalityInLaborEnabled)
+                harmony.PatchCategory(Assembly.GetExecutingAssembly(), "MaternalMortalityInLabor");
+            if (MCMSettings.Instance.CustomStillBirthEnabled)
+                harmony.PatchCategory(Assembly.GetExecutingAssembly(), "StillBirth");
+            if (MCMSettings.Instance.CustomTwinProbabilityEnabled)
+                harmony.PatchCategory(Assembly.GetExecutingAssembly(), "TwinProbability");
+            harmony.PatchAllUncategorized(Assembly.GetExecutingAssembly());
             //harmony.PatchAll(Assembly.GetExecutingAssembly());
         }
+
 
         protected override void OnGameStart(Game game, IGameStarter gameStarter)
         {
