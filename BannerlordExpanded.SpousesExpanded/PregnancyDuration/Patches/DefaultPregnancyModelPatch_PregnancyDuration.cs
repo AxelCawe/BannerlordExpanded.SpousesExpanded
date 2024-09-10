@@ -14,7 +14,7 @@ namespace BannerlordExpanded.SpousesExpanded.PregnancyDuration.Patches
         static bool firstPatchPatched = false;
         static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
-            if (!firstPatchPatched)
+            if (firstPatchPatched)
             {
                 foreach (var instruction in instructions)
                     yield return instruction;

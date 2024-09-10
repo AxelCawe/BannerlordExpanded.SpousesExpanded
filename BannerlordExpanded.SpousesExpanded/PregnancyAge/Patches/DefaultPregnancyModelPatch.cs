@@ -18,7 +18,7 @@ namespace BannerlordExpanded.SpousesExpanded.PregnancyAge.Patches
         [HarmonyPatch(typeof(DefaultPregnancyModel), "GetDailyChanceOfPregnancyForHero")]
         static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
-            if (!firstPatchPatched)
+            if (firstPatchPatched)
             {
                 foreach (var instruction in instructions)
                     yield return instruction;
