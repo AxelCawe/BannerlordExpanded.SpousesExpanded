@@ -8,6 +8,7 @@
     <Nullable>enable</Nullable>
     <BuildForWindows>false</BuildForWindows>
     <BuildForWindowsStore>false</BuildForWindowsStore>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <ModuleId>$(MSBuildProjectName)</ModuleId>
     <ModuleName>Bannerlord Expanded - Spouses Expanded</ModuleName>
     <ModuleUrl></ModuleUrl>
@@ -21,8 +22,7 @@
     <BuildForWindows>true</BuildForWindows>
   </PropertyGroup>
   <PropertyGroup Condition="$(TargetFramework) == 'net6'">
-    <BuildForWindowsStore>false</BuildForWindowsStore>
-    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <BuildForWindowsStore>true</BuildForWindowsStore>
     <EnableWindowsTargeting>true</EnableWindowsTargeting>
   </PropertyGroup>
 
