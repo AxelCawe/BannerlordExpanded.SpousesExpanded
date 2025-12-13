@@ -8,7 +8,7 @@ namespace BannerlordExpanded.SpousesExpanded.Divorce
     {
         public override void RegisterEvents()
         {
-            CampaignEvents.OnGameLoadedEvent.AddNonSerializedListener(this, AddDialog);
+            CampaignEvents.OnSessionLaunchedEvent.AddNonSerializedListener(this, AddDialog);
         }
 
         public override void SyncData(IDataStore dataStore)

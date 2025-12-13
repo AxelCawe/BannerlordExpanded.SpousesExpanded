@@ -5,6 +5,7 @@ using System.Reflection;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.CampaignBehaviors;
 using TaleWorlds.Core;
+using TaleWorlds.Core.ImageIdentifiers;
 using TaleWorlds.Localization;
 using TaleWorlds.ObjectSystem;
 
@@ -73,7 +74,7 @@ namespace BannerlordExpanded.SpousesExpanded.Behaviors
 
 
             List<InquiryElement> list = new List<InquiryElement>();
-            foreach (Hero hero in from x in Hero.OneToOneConversationHero.Clan.Lords
+            foreach (Hero hero in from x in Hero.OneToOneConversationHero.Clan.AliveLords
                                   orderby x.Age descending
                                   select x)
             {
@@ -91,7 +92,7 @@ namespace BannerlordExpanded.SpousesExpanded.Behaviors
                         }
                     }
                     if (!alreadyExists)
-                        list.Add(new InquiryElement(hero.Id, hero.Name.ToString(), new ImageIdentifier(CharacterCode.CreateFrom(hero.CharacterObject))));
+                        list.Add(new InquiryElement(hero.Id, hero.Name.ToString(), new CharacterImageIdentifier(CharacterCode.CreateFrom(hero.CharacterObject))));
                 }
             }
             MBInformationManager.ShowMultiSelectionInquiry(new MultiSelectionInquiryData(new TextObject("{=BannerlordExpandedSpousesExpanded_DontWantYourEldestMember_GameMenu_Title}Who would you prefer?").ToString()

@@ -1,7 +1,6 @@
 ﻿using BannerlordExpanded.SpousesExpanded.Utility;
 using System.Collections.Generic;
 using TaleWorlds.CampaignSystem;
-using TaleWorlds.Core;
 using TaleWorlds.Library;
 
 namespace BannerlordExpanded.SpousesExpanded.Polygamy.Behaviors
@@ -9,7 +8,6 @@ namespace BannerlordExpanded.SpousesExpanded.Polygamy.Behaviors
     internal class PlayerPolygamyBehavior : CampaignBehaviorBase
     {
         Dictionary<Hero, MBList<Hero>> _secondarySpouses = new Dictionary<Hero, MBList<Hero>>(); // Key is which Main Hero, 
-        MBList<Hero> _DEPRECATEDsecondarySpouses = new MBList<Hero>();
 
         public override void RegisterEvents()
         {
@@ -20,14 +18,6 @@ namespace BannerlordExpanded.SpousesExpanded.Polygamy.Behaviors
         public override void SyncData(IDataStore dataStore)
         {
             dataStore.SyncData("BannerlordExpanded.SpousedExpanded_SecondarySpousesDictionary", ref _secondarySpouses);
-            dataStore.SyncData("BannerlordExpanded.SpousedExpanded_SecondarySpouses", ref _DEPRECATEDsecondarySpouses);
-
-            if (_DEPRECATEDsecondarySpouses != null && _secondarySpouses.IsEmpty())
-            {
-                InformationManager.DisplayMessage(new InformationMessage("[BE - Spouses Expanded] Outdated mod save detected!\nConverting mod save to versions v1.2.10 and above..."));
-                _secondarySpouses.Add(Hero.MainHero, _DEPRECATEDsecondarySpouses);
-            }
-
         }
 
 
@@ -35,7 +25,6 @@ namespace BannerlordExpanded.SpousesExpanded.Polygamy.Behaviors
         {
             if (Hero.MainHero.Spouse == hero || hero.Spouse == Hero.MainHero)
             {
-
                 return true;
             }
             else
@@ -57,7 +46,7 @@ namespace BannerlordExpanded.SpousesExpanded.Polygamy.Behaviors
             {
 
                 MBList<Hero> spouses;
-                if (!_secondarySpouses.TryGetValue(Hero.MainHero, out spouses))
+                if (_secondarySpouses.TryGetValue(Hero.MainHero, out spouses))
                 {
                     spouses.Remove(hero);
                     spouses.Add(Hero.MainHero.Spouse);
@@ -65,7 +54,10 @@ namespace BannerlordExpanded.SpousesExpanded.Polygamy.Behaviors
                     SpousesExpandedUtil.SetHeroSpouse(Hero.MainHero, hero);
                     SpousesExpandedUtil.SetHeroSpouse(hero, Hero.MainHero);
                 }
-
+                else
+                {
+                    throw new System.Exception($"[BannerlordExpanded.SpousesExpanded]: Something wrong happened while settings {hero.Name} as primary spouse.");
+                }
 
             }
         }
@@ -83,7 +75,6 @@ namespace BannerlordExpanded.SpousesExpanded.Polygamy.Behaviors
 
         public void AddSpouse(Hero hero)
         {
-
             MBList<Hero> spouses;
             if (!_secondarySpouses.TryGetValue(Hero.MainHero, out spouses))
             {

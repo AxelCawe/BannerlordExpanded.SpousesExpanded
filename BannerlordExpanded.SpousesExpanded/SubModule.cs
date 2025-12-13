@@ -15,6 +15,7 @@ namespace BannerlordExpanded.SpousesExpanded
 {
     public class SubModule : MBSubModuleBase
     {
+        bool harmonyPatched = false;
         protected override void OnSubModuleLoad()
         {
             base.OnSubModuleLoad();
@@ -30,26 +31,31 @@ namespace BannerlordExpanded.SpousesExpanded
         protected override void OnBeforeInitialModuleScreenSetAsRoot()
         {
             base.OnBeforeInitialModuleScreenSetAsRoot();
-            Harmony harmony = new Harmony("BannerlordExpanded.SpousesExpanded");
+            Harmony.DEBUG = true;
+            if (!harmonyPatched)
+            {
+                Harmony harmony = new Harmony("BannerlordExpanded.SpousesExpanded");
 
-            if (MCMSettings.Instance.PolygamyEnabled)
-                harmony.PatchCategory(Assembly.GetExecutingAssembly(), "PolygamyModule");
-            if (MCMSettings.Instance.PregnancyAgeEnabled)
-                harmony.PatchCategory(Assembly.GetExecutingAssembly(), "PregnancyAge");
-            if (MCMSettings.Instance.PregnancyDurationEnabled)
-                harmony.PatchCategory(Assembly.GetExecutingAssembly(), "PregnancyDuration");
-            if (MCMSettings.Instance.CustomFemaleOffSpringEnabled)
-                harmony.PatchCategory(Assembly.GetExecutingAssembly(), "FemaleOffSpring");
-            if (MCMSettings.Instance.CustomMortalityInLaborEnabled)
-                harmony.PatchCategory(Assembly.GetExecutingAssembly(), "MaternalMortalityInLabor");
-            if (MCMSettings.Instance.CustomStillBirthEnabled)
-                harmony.PatchCategory(Assembly.GetExecutingAssembly(), "StillBirth");
-            if (MCMSettings.Instance.CustomTwinProbabilityEnabled)
-                harmony.PatchCategory(Assembly.GetExecutingAssembly(), "TwinProbability");
-            harmony.PatchAllUncategorized(Assembly.GetExecutingAssembly());
-            //harmony.PatchAll(Assembly.GetExecutingAssembly());
+                if (MCMSettings.Instance.PolygamyEnabled)
+                    harmony.PatchCategory(Assembly.GetExecutingAssembly(), "PolygamyModule");
+                if (MCMSettings.Instance.PregnancyAgeEnabled)
+                    harmony.PatchCategory(Assembly.GetExecutingAssembly(), "PregnancyAge");
+                if (MCMSettings.Instance.PregnancyDurationEnabled)
+                    harmony.PatchCategory(Assembly.GetExecutingAssembly(), "PregnancyDuration");
+                if (MCMSettings.Instance.CustomFemaleOffSpringEnabled)
+                    harmony.PatchCategory(Assembly.GetExecutingAssembly(), "FemaleOffSpring");
+                if (MCMSettings.Instance.CustomMortalityInLaborEnabled)
+                    harmony.PatchCategory(Assembly.GetExecutingAssembly(), "MaternalMortalityInLabor");
+                if (MCMSettings.Instance.CustomStillBirthEnabled)
+                    harmony.PatchCategory(Assembly.GetExecutingAssembly(), "StillBirth");
+                if (MCMSettings.Instance.CustomTwinProbabilityEnabled)
+                    harmony.PatchCategory(Assembly.GetExecutingAssembly(), "TwinProbability");
+                harmony.PatchAllUncategorized(Assembly.GetExecutingAssembly());
+                //harmony.PatchAll(Assembly.GetExecutingAssembly());
+
+                harmonyPatched = true;
+            }
         }
-
 
         protected override void OnGameStart(Game game, IGameStarter gameStarter)
         {
