@@ -31,7 +31,6 @@ namespace BannerlordExpanded.SpousesExpanded
         protected override void OnBeforeInitialModuleScreenSetAsRoot()
         {
             base.OnBeforeInitialModuleScreenSetAsRoot();
-            Harmony.DEBUG = true;
             if (!harmonyPatched)
             {
                 Harmony harmony = new Harmony("BannerlordExpanded.SpousesExpanded");
