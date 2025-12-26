@@ -86,6 +86,7 @@ namespace BannerlordExpanded.SpousesExpanded.Polygamy.Behaviors
 
         public bool RemoveSpouse(Hero hero)
         {
+            InformationManager.DisplayMessage(new InformationMessage("[BE - Spouses Expanded] Removing " + hero.Name.ToString()));
             MBList<Hero> spouses;
             if (!_secondarySpouses.TryGetValue(Hero.MainHero, out spouses))
             {
@@ -96,7 +97,9 @@ namespace BannerlordExpanded.SpousesExpanded.Polygamy.Behaviors
             {
                 if (spouses.Count > 0)
                 {
+                    InformationManager.DisplayMessage(new InformationMessage("[BE - Spouses Expanded] Setting as new main spouse: " + spouses[0].Name.ToString()));
                     SpousesExpandedUtil.SetHeroSpouse(Hero.MainHero, spouses[0]);
+                    spouses.RemoveAt(0);
                 }
                 else
                     SpousesExpandedUtil.SetHeroSpouse(Hero.MainHero, null);
@@ -104,7 +107,8 @@ namespace BannerlordExpanded.SpousesExpanded.Polygamy.Behaviors
             }
             else if (spouses.Contains(hero))
             {
-                _secondarySpouses.Remove(hero);
+                InformationManager.DisplayMessage(new InformationMessage("[BE - Spouses Expanded] Removing secondary spouse: " + hero.Name.ToString()));
+                _secondarySpouses[Hero.MainHero].Remove(hero);
                 return true;
             }
             else

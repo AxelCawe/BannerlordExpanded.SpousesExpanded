@@ -2,6 +2,7 @@
 using BannerlordExpanded.SpousesExpanded.Settings;
 using System.Reflection;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.Library;
 
 namespace BannerlordExpanded.SpousesExpanded.Utility
 {
@@ -30,16 +31,17 @@ namespace BannerlordExpanded.SpousesExpanded.Utility
 
         public static bool DivorceHero(Hero hero)
         {
+            InformationManager.DisplayMessage(new InformationMessage("[BE - Spouses Expanded] DivorceHero called for " + hero.Name.ToString()));
             bool success = false;
             if (MCMSettings.Instance.PolygamyEnabled)
                 success = Campaign.Current.GetCampaignBehavior<PlayerPolygamyBehavior>().RemoveSpouse(hero);
             else if (hero == Hero.MainHero.Spouse)
             {
-                Hero.MainHero.Spouse = null;
+                SetHeroSpouse(Hero.MainHero, null);
                 success = true;
             }
             if (success)
-                hero.Spouse = null;
+                SetHeroSpouse(hero, null);
             return success;
         }
 

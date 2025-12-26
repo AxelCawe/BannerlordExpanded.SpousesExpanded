@@ -1,6 +1,7 @@
 ﻿using BannerlordExpanded.SpousesExpanded.Utility;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.Actions;
+using TaleWorlds.CampaignSystem.Party;
 
 namespace BannerlordExpanded.SpousesExpanded.Divorce
 {
@@ -43,7 +44,9 @@ namespace BannerlordExpanded.SpousesExpanded.Divorce
                 {
                     ChangeGovernorAction.RemoveGovernorOf(hero);
                 }
-                CampaignEventDispatcher.Instance.OnCompanionRemoved(hero, RemoveCompanionAction.RemoveCompanionDetail.Fire);
+
+                if (hero.PartyBelongedTo == MobileParty.MainParty)
+                    CampaignEventDispatcher.Instance.OnCompanionRemoved(hero, RemoveCompanionAction.RemoveCompanionDetail.Fire);
 
                 if (hero.Father != null)
                 {
