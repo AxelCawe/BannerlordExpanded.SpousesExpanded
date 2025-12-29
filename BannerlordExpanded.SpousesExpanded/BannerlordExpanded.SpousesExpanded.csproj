@@ -14,7 +14,7 @@
     <GameFolder>C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord</GameFolder>
     <GameBinariesFolder Condition="Exists('$(GameFolder)\bin\Win64_Shipping_Client\Bannerlord.exe')">Win64_Shipping_Client</GameBinariesFolder>
     <GameBinariesFolder Condition="Exists('$(GameFolder)\bin\Gaming.Desktop.x64_Shipping_Client\Bannerlord.exe')">Gaming.Desktop.x64_Shipping_Client</GameBinariesFolder>
-    <GameVersion>1.3.10</GameVersion>
+    <GameVersion>1.3.13</GameVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="$(TargetFramework) == 'net472'">
