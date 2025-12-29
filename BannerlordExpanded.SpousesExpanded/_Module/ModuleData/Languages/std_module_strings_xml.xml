@@ -73,6 +73,12 @@
 		<string id="BannerlordExpandedSpousesExpanded_Settings_TwinProbability" text="Custom Twin Probability" />
 		<string id="BannerlordExpandedSpousesExpanded_Settings_TwinProbabilityChance" text="Chance of twins in childbirth" />
 		
+		<string id="BannerlordExpandedSpousesExpanded_Settings_PregnancyChance" text="Custom Pregnancy Chance" />
+		<string id="BannerlordExpandedSpousesExpanded_Settings_PregnancyChanceEnabled_Desc" text="Enable custom pregnancy chance multipliers." />
+		<string id="BannerlordExpandedSpousesExpanded_Settings_PregnancyChanceGlobalMultiplier" text="Global Pregnancy Chance Multiplier" />
+		<string id="BannerlordExpandedSpousesExpanded_Settings_PregnancyChanceGlobalMultiplier_Desc" text="Multiplier applied to pregnancy chance for ALL heroes. 1.0 = default." />
+		<string id="BannerlordExpandedSpousesExpanded_Settings_PregnancyChancePlayerSpouseMultiplier" text="Player Spouse Pregnancy Multiplier" />
+		<string id="BannerlordExpandedSpousesExpanded_Settings_PregnancyChancePlayerSpouseMultiplier_Desc" text="Additional multiplier applied only to player's spouse(s). Stacks with global multiplier." />
 		
 	</strings>
 </base>

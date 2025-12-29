@@ -80,5 +80,17 @@ namespace BannerlordExpanded.SpousesExpanded.Settings
         [SettingPropertyFloatingInteger("{=BannerlordExpandedSpousesExpanded_Settings_TwinProbabilityChance}Chance of twins in childbirth", 0f, 1f, RequireRestart = true)]
         public float TwinProbabilityChance { get; set; } = 0.03f;
 
+        [SettingPropertyGroup("{=BannerlordExpandedSpousesExpanded_Settings_PregnancyChance}Custom Pregnancy Chance", GroupOrder = 9)]
+        [SettingPropertyBool("{=BannerlordExpandedSpousesExpanded_Settings_PregnancyChance}Custom Pregnancy Chance", HintText = "{=BannerlordExpandedSpousesExpanded_Settings_PregnancyChanceEnabled_Desc}Enable custom pregnancy chance multipliers.", RequireRestart = true, IsToggle = true)]
+        public bool PregnancyChanceEnabled { get; set; } = true;
+
+        [SettingPropertyGroup("{=BannerlordExpandedSpousesExpanded_Settings_PregnancyChance}Custom Pregnancy Chance", GroupOrder = 9)]
+        [SettingPropertyFloatingInteger("{=BannerlordExpandedSpousesExpanded_Settings_PregnancyChanceGlobalMultiplier}Global Pregnancy Chance Multiplier", 0f, 10f, HintText = "{=BannerlordExpandedSpousesExpanded_Settings_PregnancyChanceGlobalMultiplier_Desc}Multiplier applied to pregnancy chance for ALL heroes. 1.0 = default.", RequireRestart = true)]
+        public float PregnancyChanceGlobalMultiplier { get; set; } = 1.0f;
+
+        [SettingPropertyGroup("{=BannerlordExpandedSpousesExpanded_Settings_PregnancyChance}Custom Pregnancy Chance", GroupOrder = 9)]
+        [SettingPropertyFloatingInteger("{=BannerlordExpandedSpousesExpanded_Settings_PregnancyChancePlayerSpouseMultiplier}Player Spouse Pregnancy Multiplier", 0f, 10f, HintText = "{=BannerlordExpandedSpousesExpanded_Settings_PregnancyChancePlayerSpouseMultiplier_Desc}Additional multiplier applied only to player's spouse(s). Stacks with global multiplier.", RequireRestart = true)]
+        public float PregnancyChancePlayerSpouseMultiplier { get; set; } = 1.0f;
+
     }
 }

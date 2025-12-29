@@ -49,6 +49,8 @@ namespace BannerlordExpanded.SpousesExpanded
                     harmony.PatchCategory(Assembly.GetExecutingAssembly(), "StillBirth");
                 if (MCMSettings.Instance.CustomTwinProbabilityEnabled)
                     harmony.PatchCategory(Assembly.GetExecutingAssembly(), "TwinProbability");
+                if (MCMSettings.Instance.PregnancyChanceEnabled)
+                    harmony.PatchCategory(Assembly.GetExecutingAssembly(), "PregnancyChance");
                 harmony.PatchAllUncategorized(Assembly.GetExecutingAssembly());
                 //harmony.PatchAll(Assembly.GetExecutingAssembly());
 
